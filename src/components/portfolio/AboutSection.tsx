@@ -1,3 +1,4 @@
+import p from "@/assets/p.jpg";
 import { motion, useInView } from "framer-motion";
 import {
   BriefcaseBusiness,
@@ -41,7 +42,7 @@ const quickStats = [
 const socialLinks = {
   github: "https://github.com/monir6163",
   linkedin: "https://www.linkedin.com/in/monirweb/",
-  cv: "/Monir-CV.pdf",
+  cv: "https://drive.google.com/file/d/16Tpb3dtuN6mYnlc0ehB0nWEog2wXn0L6/view",
 };
 
 const AboutSection = () => {
@@ -130,7 +131,7 @@ const AboutSection = () => {
                     <div className="h-full w-full rounded-full overflow-hidden bg-background/80 border border-border/60">
                       {!imageError ? (
                         <img
-                          src="/src/assets/p.jpg"
+                          src={p}
                           alt="Profile"
                           className="h-full w-full object-cover"
                           loading="lazy"

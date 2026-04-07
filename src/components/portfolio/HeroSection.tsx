@@ -83,7 +83,9 @@ const HeroSection = () => {
                 View Work
               </a>
               <a
-                href={"/Monir_Hossain_CV.pdf"}
+                href={
+                  "https://drive.google.com/file/d/16Tpb3dtuN6mYnlc0ehB0nWEog2wXn0L6/view"
+                }
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 rounded-lg border border-primary/35 bg-primary/10 px-4 py-2 text-sm font-medium text-primary transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary/15"

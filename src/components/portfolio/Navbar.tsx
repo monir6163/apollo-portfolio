@@ -1,3 +1,4 @@
+import p from "@/assets/p.jpg";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, Moon, Sun, X } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
@@ -114,7 +115,7 @@ const Navbar = () => {
             className="flex items-center gap-2.5 text-xl font-serif font-semibold text-foreground tracking-tight"
           >
             <img
-              src="/src/assets/p.jpg"
+              src={p}
               alt="Profile"
               className="w-8 h-8 rounded-full object-cover ring-1 ring-primary/30"
             />
