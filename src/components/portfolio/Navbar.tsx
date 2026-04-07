@@ -1,7 +1,6 @@
-import { useState, useEffect, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Sun, Moon, Download } from "lucide-react";
-import profileImg from "@/assets/profile-placeholder.jpg";
+import { AnimatePresence, motion } from "framer-motion";
+import { Menu, Moon, Sun, X } from "lucide-react";
+import { useCallback, useEffect, useState } from "react";
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -18,7 +17,9 @@ const useTheme = () => {
     if (typeof window !== "undefined") {
       const stored = localStorage.getItem("theme");
       if (stored === "light" || stored === "dark") return stored;
-      return window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+      return window.matchMedia("(prefers-color-scheme: light)").matches
+        ? "light"
+        : "dark";
     }
     return "dark";
   });
@@ -56,7 +57,7 @@ const Navbar = () => {
           setActiveSection(visible[0].target.id);
         }
       },
-      { rootMargin: "-30% 0px -60% 0px", threshold: 0 }
+      { rootMargin: "-30% 0px -60% 0px", threshold: 0 },
     );
 
     sectionIds.forEach((id) => {
@@ -91,7 +92,7 @@ const Navbar = () => {
         }
       }, 100);
     },
-    []
+    [],
   );
 
   return (
@@ -105,22 +106,23 @@ const Navbar = () => {
           : "bg-transparent"
       }`}
     >
-      <div className="section-container flex items-center justify-between h-16 md:h-20">
-        <a
-          href="#"
-          onClick={(e) => handleClick(e, "#")}
-          className="flex items-center gap-2.5 text-xl font-serif font-semibold text-foreground tracking-tight"
-        >
-          <img
-            src={profileImg}
-            alt="Profile"
-            className="w-8 h-8 rounded-full object-cover ring-1 ring-primary/30"
-          />
-          JD<span className="text-primary">.</span>
-        </a>
+      <div className="section-container h-16 md:h-20 grid grid-cols-[1fr_auto] md:grid-cols-[1fr_auto_1fr] items-center gap-3">
+        <div className="justify-self-start">
+          <a
+            href="#"
+            onClick={(e) => handleClick(e, "#")}
+            className="flex items-center gap-2.5 text-xl font-serif font-semibold text-foreground tracking-tight"
+          >
+            <img
+              src="/src/assets/p.jpg"
+              alt="Profile"
+              className="w-8 h-8 rounded-full object-cover ring-1 ring-primary/30"
+            />
+            MH<span className="text-primary">.</span>
+          </a>
+        </div>
 
-        {/* Desktop */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center justify-center gap-8 justify-self-center">
           {navLinks.map((link) => {
             const isActive = activeSection === link.href.slice(1);
             return (
@@ -129,7 +131,9 @@ const Navbar = () => {
                 href={link.href}
                 onClick={(e) => handleClick(e, link.href)}
                 className={`relative text-sm font-medium transition-colors duration-300 ${
-                  isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+                  isActive
+                    ? "text-foreground"
+                    : "text-muted-foreground hover:text-foreground"
                 }`}
               >
                 {link.label}
@@ -143,8 +147,9 @@ const Navbar = () => {
               </a>
             );
           })}
+        </div>
 
-          {/* Theme toggle */}
+        <div className="hidden md:flex items-center gap-3 justify-self-end">
           <button
             onClick={toggleTheme}
             className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-all duration-300"
@@ -164,25 +169,15 @@ const Navbar = () => {
           </button>
 
           <a
-            href="/resume.pdf"
-            download
-            className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-all duration-300"
-            aria-label="Download Resume"
-          >
-            <Download size={18} />
-          </a>
-
-          <a
             href="#contact"
             onClick={(e) => handleClick(e, "#contact")}
-            className="text-sm font-medium px-5 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 hover:shadow-lg hover:shadow-primary/20"
+            className="text-sm font-medium px-5 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 active:scale-95"
           >
             Let's Talk
           </a>
         </div>
 
-        {/* Mobile controls */}
-        <div className="flex md:hidden items-center gap-2">
+        <div className="flex md:hidden items-center gap-2 justify-self-end">
           <button
             onClick={toggleTheme}
             className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-all duration-300"
@@ -192,7 +187,8 @@ const Navbar = () => {
           </button>
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="text-foreground"
+            className="p-1 text-foreground"
+            aria-label="Toggle menu"
           >
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -202,45 +198,68 @@ const Navbar = () => {
       {/* Mobile menu */}
       <AnimatePresence>
         {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-background/95 backdrop-blur-xl border-b border-border/50"
-          >
-            <div className="section-container py-6 flex flex-col gap-4">
-              {navLinks.map((link) => {
-                const isActive = activeSection === link.href.slice(1);
-                return (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    onClick={(e) => handleClick(e, link.href)}
-                    className={`text-base transition-colors ${
-                      isActive ? "text-primary font-medium" : "text-muted-foreground hover:text-foreground"
-                    }`}
+          <>
+            <motion.button
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              onClick={() => setMobileOpen(false)}
+              className="fixed inset-0 z-40 bg-black/35 md:hidden"
+              aria-label="Close menu overlay"
+            />
+
+            <motion.aside
+              initial={{ x: "-100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "-100%" }}
+              transition={{ type: "tween", duration: 0.28 }}
+              className="fixed left-0 top-0 bottom-0 z-50 w-[82%] max-w-[320px] bg-background border-r border-border/60 backdrop-blur-xl md:hidden"
+            >
+              <div className="h-full px-6 py-6 flex flex-col">
+                <div className="flex items-center justify-between mb-7">
+                  <span className="text-lg font-serif font-semibold text-foreground">
+                    Menu
+                  </span>
+                  <button
+                    onClick={() => setMobileOpen(false)}
+                    className="p-1.5 rounded-md hover:bg-accent text-foreground"
+                    aria-label="Close menu"
                   >
-                    {link.label}
-                  </a>
-                );
-              })}
-              <a
-                href="/resume.pdf"
-                download
-                className="flex items-center gap-2 text-base text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <Download size={18} />
-                Download Resume
-              </a>
-              <a
-                href="#contact"
-                onClick={(e) => handleClick(e, "#contact")}
-                className="text-sm font-medium px-5 py-2.5 rounded-lg bg-primary text-primary-foreground text-center"
-              >
-                Let's Talk
-              </a>
-            </div>
-          </motion.div>
+                    <X size={20} />
+                  </button>
+                </div>
+
+                <div className="flex flex-col gap-4">
+                  {navLinks.map((link) => {
+                    const isActive = activeSection === link.href.slice(1);
+                    return (
+                      <a
+                        key={link.href}
+                        href={link.href}
+                        onClick={(e) => handleClick(e, link.href)}
+                        className={`text-base transition-colors ${
+                          isActive
+                            ? "text-primary font-medium"
+                            : "text-muted-foreground hover:text-foreground"
+                        }`}
+                      >
+                        {link.label}
+                      </a>
+                    );
+                  })}
+                </div>
+
+                <a
+                  href="#contact"
+                  onClick={(e) => handleClick(e, "#contact")}
+                  className="mt-auto text-sm font-medium px-5 py-2.5 rounded-lg bg-primary text-primary-foreground text-center"
+                >
+                  Let's Talk
+                </a>
+              </div>
+            </motion.aside>
+          </>
         )}
       </AnimatePresence>
     </motion.nav>

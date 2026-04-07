@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
+import { Mail, MapPin, Phone, Send } from "lucide-react";
 import { useRef, useState } from "react";
-import { Mail, MapPin, Send } from "lucide-react";
 import { toast } from "sonner";
 
 const ContactSection = () => {
@@ -16,7 +16,6 @@ const ContactSection = () => {
       return;
     }
     setSending(true);
-    // Simulate sending — will be replaced with Lovable Cloud
     await new Promise((r) => setTimeout(r, 1000));
     toast.success("Message sent! I'll get back to you soon.");
     setForm({ name: "", email: "", message: "" });
@@ -24,40 +23,53 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-24 md:py-32">
+    <section id="contact" className="py-16 md:py-20">
       <div className="section-container" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-10"
         >
-          <p className="text-sm font-medium tracking-[0.2em] uppercase text-primary mb-4">Contact</p>
-          <h2 className="text-3xl md:text-4xl font-serif font-bold">Get in Touch</h2>
+          <p className="text-sm font-medium tracking-[0.2em] uppercase text-primary mb-4">
+            Contact
+          </p>
+          <h2 className="text-3xl md:text-4xl font-serif font-bold">
+            Get in Touch
+          </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+        <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-8 xl:gap-10">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="space-y-6"
+            className="glass-card p-6 md:p-8 space-y-6"
           >
             <p className="text-muted-foreground leading-relaxed">
-              Have a project in mind or want to collaborate? I'd love to hear from you. Drop me a message and I'll respond within 24 hours.
+              Have a project in mind or want to collaborate? I'd love to hear
+              from you. Drop me a message and I'll respond within 24 hours.
             </p>
             <div className="space-y-4">
               <div className="flex items-center gap-3 text-sm">
                 <div className="p-2 rounded-lg bg-primary/10 text-primary">
                   <Mail size={16} />
                 </div>
-                <span className="text-muted-foreground">hello@johndoe.dev</span>
+                <span className="text-muted-foreground">
+                  monirhossain6163@gmail.com
+                </span>
+              </div>
+              <div className="flex items-center gap-3 text-sm">
+                <div className="p-2 rounded-lg bg-primary/10 text-primary">
+                  <Phone size={16} />
+                </div>
+                <span className="text-muted-foreground">+880 1747706163</span>
               </div>
               <div className="flex items-center gap-3 text-sm">
                 <div className="p-2 rounded-lg bg-primary/10 text-primary">
                   <MapPin size={16} />
                 </div>
-                <span className="text-muted-foreground">San Francisco, CA</span>
+                <span className="text-muted-foreground">Dhaka, Bangladesh</span>
               </div>
             </div>
           </motion.div>
@@ -67,7 +79,7 @@ const ContactSection = () => {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
             onSubmit={handleSubmit}
-            className="space-y-4"
+            className="glass-card p-6 md:p-8 space-y-4"
           >
             <input
               type="text"
@@ -96,7 +108,7 @@ const ContactSection = () => {
             <button
               type="submit"
               disabled={sending}
-              className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <Send size={16} />
               {sending ? "Sending..." : "Send Message"}
