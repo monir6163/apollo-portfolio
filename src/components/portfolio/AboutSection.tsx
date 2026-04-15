@@ -13,6 +13,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { useRef, useState } from "react";
+import { FaEnvelope } from "react-icons/fa6";
 
 const highlights = [
   {
@@ -42,7 +43,8 @@ const quickStats = [
 const socialLinks = {
   github: "https://github.com/monir6163",
   linkedin: "https://www.linkedin.com/in/monirweb/",
-  cv: "https://drive.google.com/file/d/16Tpb3dtuN6mYnlc0ehB0nWEog2wXn0L6/view",
+  envelope: "mailto:monirhossain6163@gmail.com",
+  cv: "https://drive.google.com/file/d/1hnKhw06yofd67D0g_KYkzSW5ScoJMC_b/view?usp=sharing",
 };
 
 const AboutSection = () => {
@@ -179,6 +181,15 @@ const AboutSection = () => {
                   className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border/70 bg-background/70 text-foreground transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/50 hover:text-primary"
                 >
                   <Linkedin size={18} aria-hidden="true" />
+                </a>
+                <a
+                  href={socialLinks.envelope}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Email"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border/70 bg-background/70 text-foreground transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/50 hover:text-primary"
+                >
+                  <FaEnvelope size={18} aria-hidden="true" />
                 </a>
 
                 <a

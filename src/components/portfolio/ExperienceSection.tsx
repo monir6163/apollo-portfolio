@@ -1,6 +1,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { motion, useInView } from "framer-motion";
-import { Briefcase, GraduationCap } from "lucide-react";
+import { Briefcase, GraduationCap, Sparkles } from "lucide-react";
 import { useRef } from "react";
 
 const experiences = [
@@ -147,7 +147,8 @@ const ExperienceSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-10"
         >
-          <p className="text-sm font-medium tracking-[0.2em] uppercase text-primary mb-4">
+          <p className="text-sm font-medium tracking-[0.2em] uppercase text-primary mb-4 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5">
+            <Sparkles size={14} aria-hidden="true" />
             Career & Education
           </p>
           <h2 className="text-3xl md:text-4xl font-serif font-bold">

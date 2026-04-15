@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { Mail, MapPin, Phone, Send } from "lucide-react";
+import { Mail, MapPin, Phone, Send, Sparkles } from "lucide-react";
 import { useRef, useState } from "react";
 import { toast } from "sonner";
 
@@ -31,7 +31,8 @@ const ContactSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-10"
         >
-          <p className="text-sm font-medium tracking-[0.2em] uppercase text-primary mb-4">
+          <p className="text-sm font-medium tracking-[0.2em] uppercase text-primary mb-4 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5">
+            <Sparkles size={14} aria-hidden="true" />
             Contact
           </p>
           <h2 className="text-3xl md:text-4xl font-serif font-bold">

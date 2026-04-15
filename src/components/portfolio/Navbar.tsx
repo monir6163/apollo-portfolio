@@ -1,5 +1,5 @@
 import p from "@/assets/p.jpg";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
 import { Menu, Moon, Sun, X } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 
@@ -47,6 +47,12 @@ const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const { theme, toggle: toggleTheme } = useTheme();
+  const { scrollYProgress } = useScroll();
+  const progressScaleX = useSpring(scrollYProgress, {
+    stiffness: 120,
+    damping: 28,
+    mass: 0.2,
+  });
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -107,6 +113,13 @@ const Navbar = () => {
           : "bg-transparent"
       }`}
     >
+      <div className="pointer-events-none absolute top-0 left-0 right-0 h-[2px] bg-border/40">
+        <motion.div
+          className="h-full w-full origin-left bg-primary"
+          style={{ scaleX: progressScaleX }}
+        />
+      </div>
+
       <div className="section-container h-16 md:h-20 grid grid-cols-[1fr_auto] md:grid-cols-[1fr_auto_1fr] items-center gap-3">
         <div className="justify-self-start">
           <a

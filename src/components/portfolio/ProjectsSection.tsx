@@ -1,10 +1,16 @@
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-import { ExternalLink, Github, ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
 import projects from "@/data/projects";
+import { motion, useInView } from "framer-motion";
+import { ArrowRight, ExternalLink, Github, Sparkles } from "lucide-react";
+import { useRef } from "react";
+import { Link } from "react-router-dom";
 
-const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: number }) => {
+const ProjectCard = ({
+  project,
+  index,
+}: {
+  project: (typeof projects)[0];
+  index: number;
+}) => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
@@ -43,8 +49,12 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
         </div>
       </div>
       <div className="p-6">
-        <h3 className="text-lg font-serif font-semibold text-foreground mb-2">{project.title}</h3>
-        <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{project.description}</p>
+        <h3 className="text-lg font-serif font-semibold text-foreground mb-2">
+          {project.title}
+        </h3>
+        <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+          {project.description}
+        </p>
         <div className="flex flex-wrap gap-2 mb-4">
           {project.tags.map((tag) => (
             <span
@@ -60,7 +70,10 @@ const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: n
           className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors duration-300 group/link"
         >
           View Details
-          <ArrowRight size={14} className="transition-transform duration-300 group-hover/link:translate-x-1" />
+          <ArrowRight
+            size={14}
+            className="transition-transform duration-300 group-hover/link:translate-x-1"
+          />
         </Link>
       </div>
     </motion.div>
@@ -80,8 +93,13 @@ const ProjectsSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-10"
         >
-          <p className="text-sm font-medium tracking-[0.2em] uppercase text-primary mb-4">Portfolio</p>
-          <h2 className="text-3xl md:text-4xl font-serif font-bold">Featured Projects</h2>
+          <p className="text-sm font-medium tracking-[0.2em] uppercase text-primary mb-4 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5">
+            <Sparkles size={14} aria-hidden="true" />
+            Portfolio
+          </p>
+          <h2 className="text-3xl md:text-4xl font-serif font-bold">
+            Featured Projects
+          </h2>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-8">

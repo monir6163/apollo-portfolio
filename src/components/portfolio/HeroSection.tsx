@@ -1,7 +1,8 @@
 import profileImg from "@/assets/pic.png";
 import { motion } from "framer-motion";
-import { ArrowDown, Download, Github, Linkedin } from "lucide-react";
+import { ArrowDown, Download, Github, Linkedin, Sparkles } from "lucide-react";
 import { useState } from "react";
+import { FaEnvelope } from "react-icons/fa6";
 import Typewriter from "typewriter-effect";
 
 const HeroSection = () => {
@@ -29,7 +30,8 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              <p className="text-sm font-medium tracking-[0.3em] uppercase text-primary mb-6">
+              <p className="text-sm font-medium tracking-[0.3em] uppercase text-primary mb-6 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5">
+                <Sparkles size={14} aria-hidden="true" />
                 Full-Stack Developer
               </p>
               <p className="text-base md:text-lg text-muted-foreground mb-4">
@@ -84,11 +86,11 @@ const HeroSection = () => {
               </a>
               <a
                 href={
-                  "https://drive.google.com/file/d/16Tpb3dtuN6mYnlc0ehB0nWEog2wXn0L6/view"
+                  "https://drive.google.com/file/d/1hnKhw06yofd67D0g_KYkzSW5ScoJMC_b/view?usp=sharing"
                 }
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg border border-primary/35 bg-primary/10 px-4 py-2 text-sm font-medium text-primary transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary/15"
+                className="inline-flex items-center gap-2 rounded-lg border border-primary/35 bg-primary/10 px-7 py-3 text-sm font-medium text-primary transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary/15"
               >
                 <Download size={16} aria-hidden="true" />
                 Download CV
@@ -97,6 +99,7 @@ const HeroSection = () => {
               {[
                 { icon: Github, href: "https://github.com/monir6163" },
                 { icon: Linkedin, href: "https://linkedin.com/in/monirweb" },
+                { icon: FaEnvelope, href: "mailto:monirhossain6163@gmail.com" },
               ].map(({ icon: Icon, href }) => (
                 <a
                   key={href}
