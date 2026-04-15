@@ -5,32 +5,11 @@ import { useRef } from "react";
 
 const experiences = [
   {
-    role: "Senior Frontend Developer",
-    company: "TechCorp Inc.",
-    period: "2022 — Present",
+    role: "Backend Developer",
+    company: "Tohfa IT Solution",
+    period: "2026 — Present",
     description:
-      "Leading frontend architecture for a SaaS platform serving 50K+ users. Reduced bundle size by 40% and improved Core Web Vitals across all pages.",
-  },
-  {
-    role: "Full-Stack Developer",
-    company: "StartupXYZ",
-    period: "2020 — 2022",
-    description:
-      "Built the MVP from scratch using React and Node.js. Implemented real-time collaboration features and integrated third-party APIs for payments and analytics.",
-  },
-  {
-    role: "Frontend Developer",
-    company: "Digital Agency Co.",
-    period: "2019 — 2020",
-    description:
-      "Developed responsive web applications for diverse clients across e-commerce, healthcare, and fintech. Established component libraries and coding standards.",
-  },
-  {
-    role: "Junior Developer",
-    company: "WebStudio",
-    period: "2018 — 2019",
-    description:
-      "Started my career building WordPress themes and custom plugins, then transitioned to React-based projects. Mentored by senior engineers on best practices.",
+      "Leading backend development for a employee management system using Node.js, Express, and MongoDB. Implemented RESTful APIs, optimized database queries, and integrated third-party services to enhance functionality and performance.",
   },
 ];
 
